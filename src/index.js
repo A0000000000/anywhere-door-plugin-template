@@ -104,14 +104,14 @@ function main() {
                 sendRequest(pluginName, name, data, extend).then(res => {
                     console.log(res)
                 }).catch(err => {
-                    console.log(err)
+                    console.error(err)
                 })
             }).catch(err => {
-                console.log(err)
+                console.error(err)
                 sendRequest(pluginName, name, err.message, extend).then(res => {
                     console.log(res)
                 }).catch(err => {
-                    console.log(err)
+                    console.error(err)
                 })
             })
             ctx.response.body = JSON.stringify({
@@ -121,7 +121,7 @@ function main() {
         })
     })
     app.use(router.routes()).use(router.allowedMethods())
-    app.listen(80)
+    app.listen(constant.PORT)
 }
 
 main()
